@@ -1,0 +1,347 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description"
+        content="Clínica de fisioterapia especializada en rehabilitación, ejercicio terapéutico y tratamientos personalizados para mejorar tu bienestar y calidad de vida.">
+    <title>FisioVida | Tu Clínica de Fisioterapia y Rehabilitación</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+</head>
+
+<body>
+    <!-- Header / Navigation -->
+    <header class="header" id="header">
+        <nav class="nav container">
+            <a href="#home" class="nav__logo">
+                <span class="logo-pulse"></span>
+                <span class="logo-text">Fisio<span class="logo-accent">Vida</span></span>
+            </a>
+            <ul class="nav__menu" id="nav-menu">
+                <li class="nav__item"><a href="#home" class="nav__link">Inicio</a></li>
+                <li class="nav__item"><a href="#services" class="nav__link">Servicios</a></li>
+                <li class="nav__item"><a href="#method" class="nav__link">Nuestro Método</a></li>
+                <li class="nav__item"><a href="#team" class="nav__link">Equipo</a></li>
+                <li class="nav__item"><a href="#booking" class="nav__link nav__cta">Pide Cita</a></li>
+            </ul>
+            <button class="nav__toggle" id="nav-toggle" aria-label="Toggle menu">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+        </nav>
+    </header>
+
+    <!-- Hero Section - Centered Design -->
+    <section class="hero" id="home">
+        <div class="hero__overlay"></div>
+        <div class="hero__content container">
+            <span class="hero__badge">🌟 +10 años cuidando de ti</span>
+            <h1 class="hero__title">Tu cuerpo merece <span class="highlight">moverse sin límites</span></h1>
+            <p class="hero__subtitle">Fisioterapia avanzada, rehabilitación integral y ejercicio terapéutico. Recupera
+                tu bienestar con tratamientos personalizados.</p>
+            <div class="hero__buttons">
+                <a href="#booking" class="btn btn--primary btn--glow">
+                    <span>Reservar Ahora</span>
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M5 12h14M12 5l7 7-7 7" />
+                    </svg>
+                </a>
+                <a href="#services" class="btn btn--secondary">Ver Servicios</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Services Section - 3 Equal Cards -->
+    <section class="services" id="services">
+        <div class="container">
+            <div class="section-header section-header--center">
+                <span class="section-tag">Servicios</span>
+                <h2 class="section__title">Tratamientos que <span class="gradient-text">transforman vidas</span></h2>
+                <p class="section__subtitle">Combinamos ciencia, experiencia y tecnología de vanguardia</p>
+            </div>
+
+            <div class="services__grid">
+                <article class="service-card">
+                    <div class="service-card__icon">🏋️</div>
+                    <h3 class="service-card__title">Fisioterapia</h3>
+                    <p class="service-card__description">Tratamientos especializados para recuperar la movilidad,
+                        aliviar el dolor y mejorar tu calidad de vida. Técnicas manuales y avanzadas.</p>
+                    <a href="#booking" class="service-card__link">Reservar →</a>
+                </article>
+
+                <article class="service-card">
+                    <div class="service-card__icon">🔄</div>
+                    <h3 class="service-card__title">Rehabilitación</h3>
+                    <p class="service-card__description">Programas de rehabilitación post-quirúrgica y post-lesión con
+                        protocolos científicos para una recuperación completa y segura.</p>
+                    <a href="#booking" class="service-card__link">Reservar →</a>
+                </article>
+
+                <article class="service-card">
+                    <div class="service-card__icon">💪</div>
+                    <h3 class="service-card__title">Ejercicio Terapéutico</h3>
+                    <p class="service-card__description">Programas personalizados de ejercicio para fortalecer, prevenir
+                        lesiones y mejorar tu condición física de forma segura.</p>
+                    <a href="#booking" class="service-card__link">Reservar →</a>
+                </article>
+            </div>
+        </div>
+    </section>
+
+    <!-- Method Section - Visual Timeline -->
+    <section class="method" id="method">
+        <div class="container">
+            <div class="section-header section-header--center">
+                <span class="section-tag">Nuestro Método</span>
+                <h2 class="section__title">Un enfoque <span class="gradient-text">integral</span></h2>
+            </div>
+
+            <div class="method__steps">
+                <div class="method-step">
+                    <div class="method-step__number">01</div>
+                    <div class="method-step__content">
+                        <h3>Valoración Completa</h3>
+                        <p>Evaluación física, funcional y objetivos personales. Entendemos tu historia.</p>
+                    </div>
+                    <div class="method-step__icon">🔍</div>
+                </div>
+
+                <div class="method-step">
+                    <div class="method-step__number">02</div>
+                    <div class="method-step__content">
+                        <h3>Plan Personalizado</h3>
+                        <p>Diseñamos un programa único basado en evidencia científica.</p>
+                    </div>
+                    <div class="method-step__icon">📋</div>
+                </div>
+
+                <div class="method-step">
+                    <div class="method-step__number">03</div>
+                    <div class="method-step__content">
+                        <h3>Tratamiento Activo</h3>
+                        <p>Terapia manual + ejercicio terapéutico. Tú eres parte del proceso.</p>
+                    </div>
+                    <div class="method-step__icon">🔧</div>
+                </div>
+
+                <div class="method-step">
+                    <div class="method-step__number">04</div>
+                    <div class="method-step__content">
+                        <h3>Seguimiento Continuo</h3>
+                        <p>Ajustamos el plan según tu progreso. Tu mejora es nuestra prioridad.</p>
+                    </div>
+                    <div class="method-step__icon">📈</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Team Section - Single Person -->
+    <section class="team" id="team">
+        <div class="container">
+            <div class="team__layout team__layout--single">
+                <div class="team__image">
+                    <img src="hero-image.png" alt="Nuestra fisioterapeuta">
+                </div>
+                <div class="team__info">
+                    <span class="section-tag">Nuestro Equipo</span>
+                    <h2 class="section__title section__title--left">Profesional que <span class="gradient-text">cuida de
+                            ti</span></h2>
+                    <p class="team__description">Fisioterapeuta con formación continua y pasión por la salud. Más de 10
+                        años de experiencia ayudando a pacientes a recuperar su bienestar.</p>
+
+                    <div class="team__stats">
+                        <div class="stat-pill">
+                            <span class="stat-pill__number">1,200+</span>
+                            <span class="stat-pill__label">Pacientes</span>
+                        </div>
+                        <div class="stat-pill">
+                            <span class="stat-pill__number">10+</span>
+                            <span class="stat-pill__label">Años</span>
+                        </div>
+                        <div class="stat-pill">
+                            <span class="stat-pill__number">98%</span>
+                            <span class="stat-pill__label">Satisfacción</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Booking Section with Calendly -->
+    <section class="booking" id="booking">
+        <div class="container">
+            <div class="booking__layout">
+                <div class="booking__info">
+                    <span class="section-tag section-tag--light">Reservas</span>
+                    <h2 class="section__title section__title--left section__title--light">Reserva tu cita <span
+                            class="gradient-text-light">en segundos</span></h2>
+                    <p class="booking__description">Selecciona el día y hora que mejor te convenga. Recibirás
+                        confirmación inmediata.</p>
+
+                    <div class="booking__benefits">
+                        <div class="benefit">
+                            <span class="benefit__icon">⚡</span>
+                            <div>
+                                <strong>Confirmación instantánea</strong>
+                                <p>Recibe tu cita al momento</p>
+                            </div>
+                        </div>
+                        <div class="benefit">
+                            <span class="benefit__icon">🔄</span>
+                            <div>
+                                <strong>Reprogramación fácil</strong>
+                                <p>Cambia tu cita sin problema</p>
+                            </div>
+                        </div>
+                        <div class="benefit">
+                            <span class="benefit__icon">💬</span>
+                            <div>
+                                <strong>Recordatorios</strong>
+                                <p>Te avisamos por email y SMS</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="booking__contact">
+                        <p>¿Prefieres llamar?</p>
+                        <a href="tel:+34600123456" class="booking__phone">📞 +34 600 123 456</a>
+                    </div>
+                </div>
+
+                <div class="booking__calendly">
+                    <!-- Calendly inline widget - Cambia la URL por tu enlace de Calendly -->
+                    <div class="calendly-inline-widget"
+                        data-url="https://calendly.com/tu-clinica/cita-fisioterapia?hide_event_type_details=1&hide_gdpr_banner=1&primary_color=059669"
+                        style="min-width:320px;height:700px;"></div>
+                    <script type="text/javascript" src="https://assets.calendly.com/assets/external/widget.js"
+                        async></script>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer__main">
+                <div class="footer__brand">
+                    <a href="#home" class="footer__logo">
+                        <span class="logo-pulse"></span>
+                        <span class="logo-text">Fisio<span class="logo-accent">Vida</span></span>
+                    </a>
+                    <p class="footer__tagline">Recuperando tu bienestar a través de tratamientos personalizados y
+                        profesionales.</p>
+                    <div class="footer__social">
+                        <a href="#" class="social-link" aria-label="Instagram">📸</a>
+                        <a href="#" class="social-link" aria-label="Facebook">📘</a>
+                        <a href="#" class="social-link" aria-label="WhatsApp">💬</a>
+                    </div>
+                </div>
+
+                <div class="footer__links">
+                    <h4>Navegación</h4>
+                    <ul>
+                        <li><a href="#home">Inicio</a></li>
+                        <li><a href="#services">Servicios</a></li>
+                        <li><a href="#method">Nuestro Método</a></li>
+                        <li><a href="#team">Equipo</a></li>
+                        <li><a href="#booking">Reservar</a></li>
+                    </ul>
+                </div>
+
+                <div class="footer__links">
+                    <h4>Servicios</h4>
+                    <ul>
+                        <li><a href="#services">Fisioterapia</a></li>
+                        <li><a href="#services">Rehabilitación</a></li>
+                        <li><a href="#services">Ejercicio Terapéutico</a></li>
+                    </ul>
+                </div>
+
+                <div class="footer__contact">
+                    <h4>Contacto</h4>
+                    <ul>
+                        <li>📍 Calle Ejemplo 123, Tu Ciudad</li>
+                        <li>📞 +34 600 123 456</li>
+                        <li>✉️ hola@fisiovida.com</li>
+                        <li>🕐 L-V: 9:00 - 20:00</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="footer__bottom">
+                <p>&copy; 2026 FisioVida. Todos los derechos reservados.</p>
+                <div class="footer__legal">
+                    <a href="#">Aviso Legal</a>
+                    <a href="#">Privacidad</a>
+                    <a href="#">Cookies</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Smooth scrolling for navigation links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                    navMenu.classList.remove('nav__menu--active');
+                    navToggle.classList.remove('nav__toggle--active');
+                }
+            });
+        });
+
+        // Sticky header
+        const header = document.getElementById('header');
+        window.addEventListener('scroll', () => {
+            if (window.scrollY > 50) {
+                header.classList.add('header--scrolled');
+            } else {
+                header.classList.remove('header--scrolled');
+            }
+        });
+
+        // Mobile menu toggle
+        const navToggle = document.getElementById('nav-toggle');
+        const navMenu = document.getElementById('nav-menu');
+
+        navToggle.addEventListener('click', () => {
+            navMenu.classList.toggle('nav__menu--active');
+            navToggle.classList.toggle('nav__toggle--active');
+        });
+
+        // Intersection Observer for animations
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('animate-in');
+                }
+            });
+        }, observerOptions);
+
+        document.querySelectorAll('.service-card, .method-step, .stat-pill, .benefit').forEach(el => {
+            observer.observe(el);
+        });
+    </script>
+</body>
+
+</html>
