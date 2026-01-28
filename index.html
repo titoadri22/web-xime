@@ -6,12 +6,75 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description"
         content="Clínica de fisioterapia especializada en rehabilitación, ejercicio terapéutico y tratamientos personalizados para mejorar tu bienestar y calidad de vida.">
-    <title>FisioVida | Tu Clínica de Fisioterapia y Rehabilitación</title>
+    <title>VitalSport | Tu Clínica de Fisioterapia y Rehabilitación</title>
+    <meta name="keywords"
+        content="fisioterapia, rehabilitación, vital sport, algemesí, deportes, recuperación, masajes">
+    <meta name="robots" content="index, follow">
+
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://vitalsport.com/">
+    <meta property="og:title" content="VitalSport | Tu Clínica de Fisioterapia y Rehabilitación">
+    <meta property="og:description"
+        content="Clínica de fisioterapia especializada en rehabilitación, ejercicio terapéutico y tratamientos personalizados para mejorar tu bienestar y calidad de vida.">
+    <meta property="og:image" content="https://vitalsport.com/hero-image.png">
+
+    <!-- Twitter -->
+    <meta property="twitter:card" content="summary_large_image">
+    <meta property="twitter:url" content="https://vitalsport.com/">
+    <meta property="twitter:title" content="VitalSport | Tu Clínica de Fisioterapia y Rehabilitación">
+    <meta property="twitter:description"
+        content="Clínica de fisioterapia especializada en rehabilitación, ejercicio terapéutico y tratamientos personalizados para mejorar tu bienestar y calidad de vida.">
+    <meta property="twitter:image" content="https://vitalsport.com/hero-image.png">
+
+    <!-- Schema Markup -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "MedicalBusiness",
+      "name": "VitalSport",
+      "image": "https://vitalsport.com/hero-image.png",
+      "@id": "https://vitalsport.com/#organization",
+      "url": "https://vitalsport.com",
+      "telephone": "+34676690422",
+      "address": {
+        "@type": "PostalAddress",
+        "streetAddress": "C/ Covadonga, 13B",
+        "addressLocality": "Algemesí",
+        "addressRegion": "Valencia",
+        "postalCode": "46680",
+        "addressCountry": "ES"
+      },
+      "geo": {
+        "@type": "GeoCoordinates",
+        "latitude": 39.223,
+        "longitude": -0.435
+      },
+      "openingHoursSpecification": {
+        "@type": "OpeningHoursSpecification",
+        "dayOfWeek": [
+          "Monday",
+          "Tuesday",
+          "Wednesday",
+          "Thursday",
+          "Friday"
+        ],
+        "opens": "09:00",
+        "closes": "20:00"
+      },
+      "sameAs": [
+        "https://www.facebook.com/vitalsport",
+        "https://www.instagram.com/vitalsport"
+      ]
+    }
+    </script>
+
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&display=swap"
         rel="stylesheet">
     <link rel="stylesheet" href="styles.css">
+    <link rel="preload" as="image" href="hero-image.png">
 </head>
 
 <body>
@@ -19,8 +82,8 @@
     <header class="header" id="header">
         <nav class="nav container">
             <a href="#home" class="nav__logo">
-                <span class="logo-pulse"></span>
-                <span class="logo-text">Fisio<span class="logo-accent">Vida</span></span>
+                <img src="logo_icon.png" alt="" class="logo-symbol">
+                <span class="logo-text">Vital<span class="logo-accent">Sport</span></span>
             </a>
             <ul class="nav__menu" id="nav-menu">
                 <li class="nav__item"><a href="#home" class="nav__link">Inicio</a></li>
@@ -147,7 +210,7 @@
         <div class="container">
             <div class="team__layout team__layout--single">
                 <div class="team__image">
-                    <img src="hero-image.png" alt="Nuestra fisioterapeuta">
+                    <img src="hero-image.png" alt="Nuestra fisioterapeuta" loading="lazy">
                 </div>
                 <div class="team__info">
                     <span class="section-tag">Nuestro Equipo</span>
@@ -156,19 +219,14 @@
                     <p class="team__description">Fisioterapeuta con formación continua y pasión por la salud. Más de 10
                         años de experiencia ayudando a pacientes a recuperar su bienestar.</p>
 
-                    <div class="team__stats">
-                        <div class="stat-pill">
-                            <span class="stat-pill__number">1,200+</span>
-                            <span class="stat-pill__label">Pacientes</span>
-                        </div>
-                        <div class="stat-pill">
-                            <span class="stat-pill__number">10+</span>
-                            <span class="stat-pill__label">Años</span>
-                        </div>
-                        <div class="stat-pill">
-                            <span class="stat-pill__number">98%</span>
-                            <span class="stat-pill__label">Satisfacción</span>
-                        </div>
+                    <div class="team__skills">
+                        <span class="skill-tag">Fisioterapia Deportiva</span>
+                        <span class="skill-tag">Terapia Manual</span>
+                        <span class="skill-tag">Punción Seca</span>
+                        <span class="skill-tag">Readaptación</span>
+                        <span class="skill-tag">Ecografía</span>
+                        <span class="skill-tag">Presoterapía</span>
+                        <span class="skill-tag">Rehabilitación</span>
                     </div>
                 </div>
             </div>
@@ -212,7 +270,7 @@
 
                     <div class="booking__contact">
                         <p>¿Prefieres llamar?</p>
-                        <a href="tel:+34600123456" class="booking__phone">📞 +34 600 123 456</a>
+                        <a href="tel:676690422" class="booking__phone">📞 +34 676690422</a>
                     </div>
                 </div>
 
@@ -234,8 +292,8 @@
             <div class="footer__main">
                 <div class="footer__brand">
                     <a href="#home" class="footer__logo">
-                        <span class="logo-pulse"></span>
-                        <span class="logo-text">Fisio<span class="logo-accent">Vida</span></span>
+                        <img src="logo_icon.png" alt="" class="logo-symbol">
+                        <span class="logo-text">Vital<span class="logo-accent">Sport</span></span>
                     </a>
                     <p class="footer__tagline">Recuperando tu bienestar a través de tratamientos personalizados y
                         profesionales.</p>
@@ -269,16 +327,16 @@
                 <div class="footer__contact">
                     <h4>Contacto</h4>
                     <ul>
-                        <li>📍 Calle Ejemplo 123, Tu Ciudad</li>
-                        <li>📞 +34 600 123 456</li>
-                        <li>✉️ hola@fisiovida.com</li>
+                        <li>📍 C/ Covadonga, 13B Algemesi</li>
+                        <li>📞 676690422</li>
+                        <li>✉️ fisio@vitalsport.com</li>
                         <li>🕐 L-V: 9:00 - 20:00</li>
                     </ul>
                 </div>
             </div>
 
             <div class="footer__bottom">
-                <p>&copy; 2026 FisioVida. Todos los derechos reservados.</p>
+                <p>&copy; 2026 VitalSport. Todos los derechos reservados.</p>
                 <div class="footer__legal">
                     <a href="#">Aviso Legal</a>
                     <a href="#">Privacidad</a>
@@ -305,13 +363,23 @@
             });
         });
 
-        // Sticky header
+        // Sticky header - Throttled for performance
         const header = document.getElementById('header');
+        let lastScrollY = window.scrollY;
+        let ticking = false;
+
         window.addEventListener('scroll', () => {
-            if (window.scrollY > 50) {
-                header.classList.add('header--scrolled');
-            } else {
-                header.classList.remove('header--scrolled');
+            lastScrollY = window.scrollY;
+            if (!ticking) {
+                window.requestAnimationFrame(() => {
+                    if (lastScrollY > 50) {
+                        header.classList.add('header--scrolled');
+                    } else {
+                        header.classList.remove('header--scrolled');
+                    }
+                    ticking = false;
+                });
+                ticking = true;
             }
         });
 

@@ -3,14 +3,20 @@
    =================================== */
 
 :root {
-    /* Colors - Fresh emerald palette */
-    --primary: #059669;
-    --primary-dark: #047857;
-    --primary-light: #10b981;
-    --primary-glow: rgba(5, 150, 105, 0.4);
+    /* Colors - Vibrant Blue & Sporty */
+    --primary: #0288d1;
+    /* Bright Blue */
+    --primary-dark: #01579b;
+    /* Deep Blue */
+    --primary-light: #4fc3f7;
+    /* Sky Blue */
+    --primary-glow: rgba(2, 136, 209, 0.4);
+
     --secondary: #0f172a;
     --secondary-light: #1e293b;
-    --accent: #f59e0b;
+    --accent: #29b6f6;
+    /* Lighter Cyan Blue Accent */
+    --accent-glow: rgba(41, 182, 246, 0.4);
 
     /* Neutrals */
     --white: #ffffff;
@@ -32,8 +38,14 @@
     --section-padding: 6rem;
 
     /* Effects */
+    --shadow-sm: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+    --shadow-md: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+    --shadow-lg: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
     --shadow-glow: 0 0 40px var(--primary-glow);
-    --glass-bg: rgba(255, 255, 255, 0.85);
+
+    --glass-bg: rgba(255, 255, 255, 0.7);
+    --glass-border: rgba(255, 255, 255, 0.5);
+    --glass-blur: blur(12px);
 }
 
 /* ===================================
@@ -138,10 +150,11 @@ ul {
 }
 
 .gradient-text {
-    background: linear-gradient(135deg, var(--primary), var(--primary-light));
+    background: linear-gradient(135deg, var(--primary), #81d4fa);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     background-clip: text;
+    filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.1));
 }
 
 .gradient-text-light {
@@ -173,14 +186,16 @@ ul {
 }
 
 .btn--primary {
-    background: linear-gradient(135deg, var(--primary), var(--primary-dark));
+    background: linear-gradient(135deg, var(--primary), #29b6f6);
     color: var(--white);
     box-shadow: 0 4px 15px var(--primary-glow);
+    border: 1px solid rgba(255, 255, 255, 0.2);
 }
 
 .btn--primary:hover {
-    transform: translateY(-3px);
-    box-shadow: var(--shadow-glow);
+    transform: translateY(-3px) scale(1.02);
+    box-shadow: 0 0 30px var(--primary-glow);
+    color: var(--secondary);
 }
 
 .btn--secondary {
@@ -230,8 +245,9 @@ ul {
 
 .header--scrolled {
     background: var(--glass-bg);
-    backdrop-filter: blur(20px);
-    box-shadow: 0 1px 20px rgba(0, 0, 0, 0.1);
+    backdrop-filter: var(--glass-blur);
+    -webkit-backdrop-filter: var(--glass-blur);
+    border-bottom: 1px solid var(--glass-border);
     padding: 0.75rem 0;
 }
 
@@ -247,26 +263,11 @@ ul {
     gap: 0.75rem;
 }
 
-.logo-pulse {
-    width: 12px;
-    height: 12px;
-    background: var(--primary);
-    border-radius: 50%;
-    animation: pulse 2s ease-in-out infinite;
-}
-
-@keyframes pulse {
-
-    0%,
-    100% {
-        transform: scale(1);
-        opacity: 1;
-    }
-
-    50% {
-        transform: scale(1.2);
-        opacity: 0.7;
-    }
+.logo-symbol {
+    height: 40px;
+    width: auto;
+    object-fit: contain;
+    transition: transform 0.3s ease;
 }
 
 .logo-text {
@@ -282,6 +283,14 @@ ul {
 
 .logo-accent {
     color: var(--primary);
+}
+
+.header--scrolled .logo-symbol {
+    height: 32px;
+}
+
+.nav__logo:hover .logo-symbol {
+    transform: scale(1.1) rotate(5deg);
 }
 
 .nav__menu {
@@ -363,7 +372,9 @@ ul {
 .hero__overlay {
     position: absolute;
     inset: 0;
-    background: linear-gradient(135deg, rgba(15, 23, 42, 0.9) 0%, rgba(30, 41, 59, 0.85) 100%);
+    background: linear-gradient(135deg, rgba(15, 23, 42, 0.95) 0%, rgba(30, 41, 59, 0.8) 100%);
+    background: radial-gradient(circle at top right, rgba(2, 136, 209, 0.15), transparent 40%),
+        linear-gradient(135deg, rgba(15, 23, 42, 0.95) 0%, rgba(30, 41, 59, 0.9) 100%);
 }
 
 .hero__content {
@@ -425,14 +436,18 @@ ul {
 }
 
 .service-card {
-    background: var(--white);
+    background: rgba(255, 255, 255, 0.8);
     padding: 2.5rem;
-    border-radius: 20px;
-    border: 1px solid var(--gray-100);
+    border-radius: 24px;
+    border: 1px solid var(--white);
+    backdrop-filter: blur(10px);
+    box-shadow: var(--shadow-md);
     text-align: center;
     transition: all 0.4s ease;
     opacity: 0;
     transform: translateY(30px);
+    will-change: transform, opacity;
+    backface-visibility: hidden;
 }
 
 .service-card.animate-in {
@@ -442,8 +457,9 @@ ul {
 
 .service-card:hover {
     transform: translateY(-10px);
-    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
-    border-color: var(--primary-light);
+    box-shadow: 0 20px 40px rgba(2, 136, 209, 0.15);
+    border-color: var(--primary);
+    background: rgba(255, 255, 255, 0.95);
 }
 
 .service-card__icon {
@@ -500,6 +516,7 @@ ul {
     padding: 2rem 1rem;
     opacity: 0;
     transform: translateY(30px);
+    will-change: transform, opacity;
 }
 
 .method-step.animate-in {
@@ -569,41 +586,56 @@ ul {
     line-height: 1.8;
 }
 
-.team__stats {
+.team__skills {
     display: flex;
-    gap: 1rem;
     flex-wrap: wrap;
+    gap: 0.75rem;
+    margin-top: 1rem;
 }
 
-.stat-pill {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    padding: 1.5rem 2rem;
-    background: var(--white);
-    border-radius: 16px;
-    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05);
+.skill-tag {
+    padding: 0.5rem 1rem;
+    background: var(--gray-100);
+    color: var(--primary-dark);
+    font-weight: 500;
+    font-size: 0.9rem;
+    border-radius: 8px;
+    border: 1px solid var(--gray-200);
+    transition: all 0.3s ease;
     opacity: 0;
     transform: translateY(20px);
+    animation: fadeInUp 0.5s ease forwards;
 }
 
-.stat-pill.animate-in {
-    opacity: 1;
-    transform: translateY(0);
-    transition: all 0.5s ease;
+.skill-tag:nth-child(2) {
+    animation-delay: 0.1s;
 }
 
-.stat-pill__number {
-    font-size: 2rem;
-    font-weight: 800;
-    color: var(--primary);
+.skill-tag:nth-child(3) {
+    animation-delay: 0.2s;
 }
 
-.stat-pill__label {
-    font-size: 0.75rem;
-    text-transform: uppercase;
-    letter-spacing: 1px;
-    color: var(--gray-500);
+.skill-tag:nth-child(4) {
+    animation-delay: 0.3s;
+}
+
+.skill-tag:nth-child(5) {
+    animation-delay: 0.4s;
+}
+
+.skill-tag:hover {
+    background: var(--primary);
+    color: var(--white);
+    border-color: var(--primary);
+    transform: translateY(-3px);
+    box-shadow: 0 4px 12px var(--primary-glow);
+}
+
+@keyframes fadeInUp {
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
 }
 
 /* ===================================
@@ -728,6 +760,8 @@ ul {
 .footer {
     background: var(--gray-900);
     padding: 5rem 0 2rem;
+    content-visibility: auto;
+    contain-intrinsic-size: 500px;
 }
 
 .footer__main {
