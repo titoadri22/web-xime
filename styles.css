@@ -1151,6 +1151,7 @@
     }
 
     #chat-box {
+        display: none;
         position: fixed;
         bottom: 90px;
         right: 20px;
@@ -1160,18 +1161,14 @@
         background: white;
         border-radius: 12px;
         box-shadow: 0 10px 25px rgba(0,0,0,0.15);
-        display: flex;
         flex-direction: column;
         z-index: 9999;
-        transition: opacity 0.3s ease, transform 0.3s ease;
         overflow: hidden;
         border: 1px solid var(--gray-200);
     }
 
-    #chat-box.chat-hidden {
-        opacity: 0;
-        transform: translateY(20px);
-        pointer-events: none;
+    #chat-box.chat-open {
+        display: flex;
     }
 
     #chat-header {

@@ -625,7 +625,7 @@
     <button id="chat-btn" aria-label="Abrir chat">
         <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"></path></svg>
     </button>
-    <div id="chat-box" class="chat-hidden">
+    <div id="chat-box">
         <div id="chat-header">Asistente Virtual</div>
         <div id="chat-messages"></div>
         <div id="chat-input-area">
@@ -635,102 +635,79 @@
     </div>
 
     <script>
-        // --- Chat Assistant Logic ---
-        document.addEventListener('DOMContentLoaded', () => {
-            const chatBtn = document.getElementById('chat-btn');
-            const chatBox = document.getElementById('chat-box');
-            const chatMessages = document.getElementById('chat-messages');
-            const chatInput = document.getElementById('chat-input');
-            const chatSend = document.getElementById('chat-send');
+        const chatBtn = document.getElementById('chat-btn');
+        const chatBox = document.getElementById('chat-box');
+        const chatMessages = document.getElementById('chat-messages');
+        const chatInput = document.getElementById('chat-input');
+        const chatSend = document.getElementById('chat-send');
 
-            if (!chatBtn || !chatBox) return;
+        let chatHistory = [];
+        let isFirstOpen = true;
 
-            let chatHistory = [];
-            let isChatOpen = false;
-            let isFirstOpen = true;
+        function addMessage(text, sender) {
+            const msgDiv = document.createElement('div');
+            msgDiv.classList.add('chat-message', sender);
+            msgDiv.textContent = text;
+            chatMessages.appendChild(msgDiv);
+            chatMessages.scrollTop = chatMessages.scrollHeight;
+        }
 
-            function addMessage(text, sender) {
-                const msgDiv = document.createElement('div');
-                msgDiv.classList.add('chat-message', sender);
-                msgDiv.textContent = text;
-                chatMessages.appendChild(msgDiv);
-                chatMessages.scrollTop = chatMessages.scrollHeight;
+        function showThinking() {
+            const thinkingDiv = document.createElement('div');
+            thinkingDiv.classList.add('chat-message', 'bot');
+            thinkingDiv.id = 'chat-thinking';
+            thinkingDiv.innerHTML = '<span class="typing-indicator"><span></span><span></span><span></span></span>';
+            chatMessages.appendChild(thinkingDiv);
+            chatMessages.scrollTop = chatMessages.scrollHeight;
+        }
+
+        function removeThinking() {
+            const el = document.getElementById('chat-thinking');
+            if (el) el.remove();
+        }
+
+        chatBtn.addEventListener('click', () => {
+            const isOpen = chatBox.classList.toggle('chat-open');
+            if (isOpen && isFirstOpen) {
+                addMessage('¡Hola! Soy el asistente virtual de VitalSport. ¿En qué te puedo ayudar hoy?', 'bot');
+                isFirstOpen = false;
+                chatInput.focus();
             }
+        });
 
-            function showThinking() {
-                const thinkingDiv = document.createElement('div');
-                thinkingDiv.classList.add('chat-message', 'bot');
-                thinkingDiv.id = 'chat-thinking';
-                thinkingDiv.innerHTML = '<span class="typing-indicator"><span></span><span></span><span></span></span>';
-                chatMessages.appendChild(thinkingDiv);
-                chatMessages.scrollTop = chatMessages.scrollHeight;
+        async function sendMessage() {
+            const text = chatInput.value.trim();
+            if (!text) return;
+
+            addMessage(text, 'user');
+            chatInput.value = '';
+            chatHistory.push({ role: 'user', content: text });
+            showThinking();
+
+            try {
+                const response = await fetch('/api/chat.php', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({ messages: chatHistory })
+                });
+                removeThinking();
+                if (!response.ok) throw new Error('Network error');
+                const data = await response.json();
+                if (data.reply) {
+                    addMessage(data.reply, 'bot');
+                    chatHistory.push({ role: 'assistant', content: data.reply });
+                } else if (data.error) {
+                    addMessage('Lo siento, hubo un problema: ' + data.error, 'bot');
+                }
+            } catch (error) {
+                removeThinking();
+                addMessage('Error de conexión. Llámanos al 614 07 96 81.', 'bot');
             }
+        }
 
-            function removeThinking() {
-                const thinkingDiv = document.getElementById('chat-thinking');
-                if (thinkingDiv) {
-                    thinkingDiv.remove();
-                }
-            }
-
-            chatBtn.addEventListener('click', () => {
-                isChatOpen = !isChatOpen;
-                if (isChatOpen) {
-                    chatBox.classList.remove('chat-hidden');
-                    if (isFirstOpen) {
-                        addMessage('¡Hola! Soy el asistente virtual de VitalSport. ¿En qué te puedo ayudar hoy?', 'bot');
-                        isFirstOpen = false;
-                    }
-                } else {
-                    chatBox.classList.add('chat-hidden');
-                }
-            });
-
-            async function sendMessage() {
-                const text = chatInput.value.trim();
-                if (!text) return;
-
-                addMessage(text, 'user');
-                chatInput.value = '';
-                
-                chatHistory.push({ role: 'user', content: text });
-                
-                showThinking();
-
-                try {
-                    const response = await fetch('/api/chat.php', {
-                        method: 'POST',
-                        headers: { 'Content-Type': 'application/json' },
-                        body: JSON.stringify({ messages: chatHistory })
-                    });
-
-                    removeThinking();
-
-                    if (!response.ok) {
-                        throw new Error('Network response was not ok');
-                    }
-
-                    const data = await response.json();
-                    
-                    if (data.reply) {
-                        addMessage(data.reply, 'bot');
-                        chatHistory.push({ role: 'assistant', content: data.reply });
-                    } else if (data.error) {
-                        addMessage('Lo siento, hubo un problema: ' + data.error, 'bot');
-                    }
-                } catch (error) {
-                    removeThinking();
-                    addMessage('Error de conexión. Inténtalo de nuevo más tarde o llama al 614 07 96 81.', 'bot');
-                    console.error('Chat error:', error);
-                }
-            }
-
-            chatSend.addEventListener('click', sendMessage);
-            chatInput.addEventListener('keypress', (e) => {
-                if (e.key === 'Enter') {
-                    sendMessage();
-                }
-            });
+        chatSend.addEventListener('click', sendMessage);
+        chatInput.addEventListener('keypress', (e) => {
+            if (e.key === 'Enter') sendMessage();
         });
     </script>
 </body>
