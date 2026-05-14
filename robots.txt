@@ -1,0 +1,21 @@
+# robots.txt for VitalSport - https://vitalsport.es
+
+# Allow all search engines
+User-agent: *
+Allow: /
+
+# Sitemap location
+Sitemap: https://vitalsport.es/sitemap.xml
+
+# Crawl delay (optional, helps with server load)
+Crawl-delay: 1
+
+# Block access to admin areas (if any in future)
+Disallow: /admin/
+Disallow: /private/
+
+# Allow important resources
+Allow: /styles.css
+Allow: /logo_icon.png
+Allow: /hero-image.png
+Allow: /team-image.png
