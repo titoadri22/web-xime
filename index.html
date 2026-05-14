@@ -623,7 +623,7 @@
 
     <!-- Chat Assistant -->
     <button id="chat-btn" aria-label="Abrir chat">
-        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"></path></svg>
+        <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"></path></svg>
     </button>
     <div id="chat-box">
         <div id="chat-header">Asistente Virtual</div>
@@ -691,17 +691,17 @@
                     body: JSON.stringify({ messages: chatHistory })
                 });
                 removeThinking();
-                if (!response.ok) throw new Error('Network error');
                 const data = await response.json();
                 if (data.reply) {
                     addMessage(data.reply, 'bot');
                     chatHistory.push({ role: 'assistant', content: data.reply });
-                } else if (data.error) {
-                    addMessage('Lo siento, hubo un problema: ' + data.error, 'bot');
+                } else {
+                    addMessage('Error: ' + (data.error || 'respuesta inesperada'), 'bot');
                 }
             } catch (error) {
                 removeThinking();
-                addMessage('Error de conexión. Llámanos al 614 07 96 81.', 'bot');
+                addMessage('Error de conexión al servidor. ¿Está el fichero .env subido a Hostinger?', 'bot');
+                console.error('Chat error:', error);
             }
         }
 

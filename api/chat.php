@@ -1,12 +1,23 @@
 <?php
+ob_start();
+
 header('Content-Type: application/json; charset=utf-8');
+
+function sendError($code, $msg)
+{
+    ob_clean();
+    http_response_code($code);
+    echo json_encode(['error' => $msg]);
+    exit;
+}
 
 // Load .env from project root
 $envPath = dirname(__DIR__) . '/.env';
 if (file_exists($envPath)) {
     $lines = file($envPath, FILE_IGNORE_NEW_LINES | FILE_SKIP_EMPTY_LINES);
     foreach ($lines as $line) {
-        if (strpos(trim($line), '#') === 0) continue;
+        if (strpos(trim($line), '#') === 0)
+            continue;
         if (strpos($line, '=') !== false) {
             [$name, $value] = explode('=', $line, 2);
             $_ENV[trim($name)] = trim($value);
@@ -16,24 +27,22 @@ if (file_exists($envPath)) {
 
 $apiKey = $_ENV['GROQ_API_KEY'] ?? '';
 if (!$apiKey) {
-    http_response_code(500);
-    echo json_encode(["error" => "API key not configured"]);
-    exit;
+    sendError(500, 'API key no configurada. Sube el fichero .env al servidor.');
 }
 
 if ($_SERVER['REQUEST_METHOD'] !== 'POST') {
-    http_response_code(405);
-    echo json_encode(["error" => "Method Not Allowed"]);
-    exit;
+    sendError(405, 'Method Not Allowed');
+}
+
+if (!function_exists('curl_init')) {
+    sendError(500, 'cURL no está habilitado en este servidor PHP.');
 }
 
 $input = file_get_contents('php://input');
 $data = json_decode($input, true);
 
 if (!isset($data['messages']) || !is_array($data['messages'])) {
-    http_response_code(400);
-    echo json_encode(["error" => "Invalid request format"]);
-    exit;
+    sendError(400, 'Formato de petición inválido');
 }
 
 $systemPrompt = "Eres el asistente virtual inteligente de 'VitalSport', una clínica de fisioterapia avanzada situada en Algemesí, Valencia.
@@ -52,36 +61,29 @@ Tu objetivo es ayudar a los visitantes de la web respondiendo a sus preguntas, d
 - **Ejercicio Terapéutico:** Programas personalizados para fortalecer y prevenir lesiones de forma segura.
 - **Otros servicios:** Terapia manual, readaptación, ecografía, presoterapia.
 
-### REGLAS DE COMPORTAMIENTO (MUY IMPORTANTE):
-1. **Tono:** Sé amable, empático, profesional y muy cercano. Habla siempre en el idioma en el que te hablen (español o valenciano preferiblemente).
-2. **Citas:** No tienes acceso a la agenda en tiempo real. Si alguien quiere pedir cita o preguntar por disponibilidad, invítale a reservar directamente en la web (usando el botón 'Reservar Ahora') o dale el número de teléfono/WhatsApp (+34 614 07 96 81) indicándole que allí se lo confirmarán al instante.
-3. **No inventes:** Si no sabes la respuesta o te preguntan algo médico/diagnóstico específico, indica con educación que cada caso es único y que es mejor que contacten por teléfono o WhatsApp para que el fisioterapeuta les asesore directamente.
-4. **Respuestas cortas:** Sé conciso y directo, ideal para leer en un móvil. Evita párrafos muy largos. Utiliza emojis ocasionalmente para dar cercanía 🏃‍♂️💪🙌.";
+### REGLAS DE COMPORTAMIENTO:
+1. Tono amable, empático y profesional. Habla en el idioma del usuario.
+2. Para citas, invita a reservar en la web o llama al +34 614 07 96 81.
+3. Si no sabes algo médico específico, deriva al fisioterapeuta.
+4. Respuestas cortas y directas. Usa emojis ocasionalmente 🏃‍♂️💪.";
 
 $messages = $data['messages'];
+array_unshift($messages, ['role' => 'system', 'content' => $systemPrompt]);
 
-array_unshift($messages, [
-    "role" => "system",
-    "content" => $systemPrompt
-]);
-
-$url = "https://api.groq.com/openai/v1/chat/completions";
-
-$postData = [
-    "model" => "llama-3.3-70b-versatile",
-    "messages" => $messages,
-    "temperature" => 0.6,
-    "max_tokens" => 500
-];
-
-$ch = curl_init($url);
+$ch = curl_init('https://api.groq.com/openai/v1/chat/completions');
 curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
 curl_setopt($ch, CURLOPT_POST, true);
-curl_setopt($ch, CURLOPT_POSTFIELDS, json_encode($postData));
+curl_setopt($ch, CURLOPT_POSTFIELDS, json_encode([
+    'model' => 'llama-3.3-70b-versatile',
+    'messages' => $messages,
+    'temperature' => 0.6,
+    'max_tokens' => 500
+]));
 curl_setopt($ch, CURLOPT_HTTPHEADER, [
-    "Authorization: Bearer " . $apiKey,
-    "Content-Type: application/json"
+    'Authorization: Bearer ' . $apiKey,
+    'Content-Type: application/json'
 ]);
+curl_setopt($ch, CURLOPT_TIMEOUT, 15);
 
 $response = curl_exec($ch);
 $httpCode = curl_getinfo($ch, CURLINFO_HTTP_CODE);
@@ -89,24 +91,19 @@ $curlError = curl_error($ch);
 curl_close($ch);
 
 if ($curlError) {
-    http_response_code(500);
-    echo json_encode(["error" => "Error connecting to AI service"]);
-    exit;
+    sendError(500, "Error cURL: $curlError");
 }
+
+$decoded = json_decode($response, true);
 
 if ($httpCode >= 400) {
-    http_response_code($httpCode);
-    $responseData = json_decode($response, true);
-    $errorMsg = isset($responseData['error']['message']) ? $responseData['error']['message'] : 'API Error';
-    echo json_encode(["error" => $errorMsg]);
-    exit;
+    $msg = $decoded['error']['message'] ?? "Groq API error $httpCode";
+    sendError($httpCode, $msg);
 }
 
-$responseData = json_decode($response, true);
-if (isset($responseData['choices'][0]['message']['content'])) {
-    $aiReply = $responseData['choices'][0]['message']['content'];
-    echo json_encode(["reply" => $aiReply]);
-} else {
-    http_response_code(500);
-    echo json_encode(["error" => "Invalid response format from AI service"]);
+if (!isset($decoded['choices'][0]['message']['content'])) {
+    sendError(500, 'Respuesta inesperada de Groq: ' . $response);
 }
+
+ob_clean();
+echo json_encode(['reply' => $decoded['choices'][0]['message']['content']]);
