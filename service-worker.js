@@ -1,12 +1,15 @@
 // VitalSport Service Worker for PWA functionality
-const CACHE_NAME = 'vitalsport-v1';
+// Red primero: siempre se sirve la versión más reciente y la caché solo se usa sin conexión.
+// Al cambiar CACHE_NAME se borran las cachés antiguas de los visitantes.
+const CACHE_NAME = 'vitalsport-v2';
 const urlsToCache = [
   '/',
   '/index.html',
   '/styles.css',
   '/logo_icon.png',
   '/hero-image.png',
-  '/team-image.png'
+  '/team-image.png',
+  '/fonts/outfit-latin.woff2'
 ];
 
 // Install event - cache resources
@@ -33,35 +36,24 @@ self.addEventListener('activate', event => {
   );
 });
 
-// Fetch event - serve from cache, fallback to network
+// Fetch event - network first, fallback to cache
 self.addEventListener('fetch', event => {
+  const url = new URL(event.request.url);
+
+  // Solo GET de la propia web; el chat (/api/) y terceros (Calendly) van directos a la red
+  if (event.request.method !== 'GET' || url.origin !== self.location.origin || url.pathname.startsWith('/api/')) {
+    return;
+  }
+
   event.respondWith(
-    caches.match(event.request)
+    fetch(event.request)
       .then(response => {
-        // Cache hit - return response
-        if (response) {
-          return response;
-        }
-        
-        // Clone the request
-        const fetchRequest = event.request.clone();
-        
-        return fetch(fetchRequest).then(response => {
-          // Check if valid response
-          if (!response || response.status !== 200 || response.type !== 'basic') {
-            return response;
-          }
-          
-          // Clone the response
+        if (response && response.status === 200 && response.type === 'basic') {
           const responseToCache = response.clone();
-          
-          caches.open(CACHE_NAME)
-            .then(cache => {
-              cache.put(event.request, responseToCache);
-            });
-          
-          return response;
-        });
+          caches.open(CACHE_NAME).then(cache => cache.put(event.request, responseToCache));
+        }
+        return response;
       })
+      .catch(() => caches.match(event.request))
   );
 });

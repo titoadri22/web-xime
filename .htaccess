@@ -1,0 +1,7 @@
+# VitalSport
+ErrorDocument 404 /404.html
+
+# Nunca servir ficheros de configuración
+<FilesMatch "^\.(env|git)">
+    Require all denied
+</FilesMatch>

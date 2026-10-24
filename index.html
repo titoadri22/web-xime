@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
     <!-- Primary Meta Tags -->
-    <title>VitalSport</title>
+    <title>Fisioterapia en Algemesí | VitalSport</title>
     <meta name="title" content="VitalSport - Fisioterapia Algemesí Valencia">
     <meta name="description"
         content="🏆 Clínica de Fisioterapia en Algemesí (Valencia). Especialistas en rehabilitación deportiva, terapia manual y readaptación. ✅ Reserva tu cita: 614 07 96 81">
@@ -61,25 +61,12 @@
     <meta name="twitter:image:alt" content="VitalSport - Clínica de Fisioterapia">
 
     <!-- Performance & Resource Hints -->
-    <link rel="preconnect" href="https://fonts.googleapis.com" crossorigin>
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link rel="dns-prefetch" href="https://assets.calendly.com">
-    <link rel="preconnect" href="https://assets.calendly.com">
     <link rel="preload" as="image" href="hero-image.png" fetchpriority="high">
     <link rel="preload" as="image" href="logo_icon.png">
-    <link rel="preload" href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&display=swap"
-        as="style">
+    <link rel="preload" href="fonts/outfit-latin.woff2" as="font" type="font/woff2" crossorigin>
 
-    <!-- Fonts with optimized loading -->
-    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&display=swap"
-        rel="stylesheet" media="print" onload="this.media='all'">
-    <noscript>
-        <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&display=swap"
-            rel="stylesheet">
-    </noscript>
-
-    <!-- Stylesheet -->
-    <link rel="stylesheet" href="styles.css?v=2.0.1">
+    <!-- Stylesheet (la fuente Outfit está autoalojada en /fonts) -->
+    <link rel="stylesheet" href="styles.css?v=2.1.0">
 
     <!-- JSON-LD Structured Data - LocalBusiness -->
     <script type="application/ld+json">
@@ -155,37 +142,41 @@
               "name": "Rehabilitación",
               "description": "Programas de rehabilitación post-quirúrgica y post-lesión"
             }
+          },
+          {
+            "@type": "Offer",
+            "itemOffered": {
+              "@type": "Service",
+              "name": "Terapia Manual",
+              "description": "Técnicas manuales para reducir el dolor y recuperar la movilidad articular y muscular"
+            }
+          },
+          {
+            "@type": "Offer",
+            "itemOffered": {
+              "@type": "Service",
+              "name": "Readaptación",
+              "description": "Vuelta progresiva y segura al deporte y a la actividad diaria tras una lesión"
+            }
+          },
+          {
+            "@type": "Offer",
+            "itemOffered": {
+              "@type": "Service",
+              "name": "Ecografía musculoesquelética",
+              "description": "Valoración ecográfica de músculos, tendones y ligamentos y seguimiento de la evolución"
+            }
+          },
+          {
+            "@type": "Offer",
+            "itemOffered": {
+              "@type": "Service",
+              "name": "Presoterapia",
+              "description": "Presión neumática para mejorar la circulación, reducir la hinchazón y favorecer la recuperación"
+            }
           }
         ]
       }
-    }
-    </script>
-
-    <!-- JSON-LD Structured Data - BreadcrumbList -->
-    <script type="application/ld+json">
-    {
-      "@context": "https://schema.org",
-      "@type": "BreadcrumbList",
-      "itemListElement": [
-        {
-          "@type": "ListItem",
-          "position": 1,
-          "name": "Inicio",
-          "item": "https://vitalsport.es/"
-        },
-        {
-          "@type": "ListItem",
-          "position": 2,
-          "name": "Servicios",
-          "item": "https://vitalsport.es/#services"
-        },
-        {
-          "@type": "ListItem",
-          "position": 3,
-          "name": "Reservar Cita",
-          "item": "https://vitalsport.es/#booking"
-        }
-      ]
     }
     </script>
 
@@ -208,7 +199,7 @@
           "name": "¿Qué servicios de fisioterapia ofrecen?",
           "acceptedAnswer": {
             "@type": "Answer",
-            "text": "Ofrecemos fisioterapia deportiva, rehabilitación post-quirúrgica y post-lesión, terapia manual, readaptación, ecografía y presoterapía."
+            "text": "Ofrecemos fisioterapia deportiva, rehabilitación post-quirúrgica y post-lesión, terapia manual, readaptación, ecografía y presoterapia."
           }
         },
         {
@@ -313,6 +304,37 @@
                         <a href="#booking" class="service-card__link">Reservar →</a>
                     </article>
 
+                    <article class="service-card">
+                        <div class="service-card__icon">🤲</div>
+                        <h3 class="service-card__title">Terapia Manual</h3>
+                        <p class="service-card__description">Movilizaciones, masaje terapéutico y liberación miofascial
+                            para reducir el dolor y devolver la movilidad a articulaciones y músculos.</p>
+                        <a href="#booking" class="service-card__link">Reservar →</a>
+                    </article>
+
+                    <article class="service-card">
+                        <div class="service-card__icon">🏃</div>
+                        <h3 class="service-card__title">Readaptación</h3>
+                        <p class="service-card__description">Te acompañamos en la vuelta a tu deporte o a tu día a día
+                            tras una lesión, con una progresión de cargas segura y adaptada a ti.</p>
+                        <a href="#booking" class="service-card__link">Reservar →</a>
+                    </article>
+
+                    <article class="service-card">
+                        <div class="service-card__icon">🩻</div>
+                        <h3 class="service-card__title">Ecografía</h3>
+                        <p class="service-card__description">Ecografía musculoesquelética para valorar músculos, tendones
+                            y ligamentos y seguir tu evolución con precisión durante el tratamiento.</p>
+                        <a href="#booking" class="service-card__link">Reservar →</a>
+                    </article>
+
+                    <article class="service-card">
+                        <div class="service-card__icon">💨</div>
+                        <h3 class="service-card__title">Presoterapia</h3>
+                        <p class="service-card__description">Presión neumática que mejora la circulación, reduce la
+                            hinchazón y acelera la recuperación muscular después del esfuerzo.</p>
+                        <a href="#booking" class="service-card__link">Reservar →</a>
+                    </article>
                 </div>
             </div>
         </section>
@@ -384,10 +406,41 @@
                             <span class="skill-tag">Terapia Manual</span>
                             <span class="skill-tag">Readaptación</span>
                             <span class="skill-tag">Ecografía</span>
-                            <span class="skill-tag">Presoterapía</span>
+                            <span class="skill-tag">Presoterapia</span>
                             <span class="skill-tag">Rehabilitación</span>
                         </div>
                     </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="faq" id="faq">
+            <div class="container">
+                <div class="section-header section-header--center">
+                    <span class="section-tag">Preguntas frecuentes</span>
+                    <h2 class="section__title">Resolvemos tus <span class="gradient-text">dudas</span></h2>
+                </div>
+
+                <div class="faq__list">
+                    <details class="faq__item">
+                        <summary>¿Dónde está ubicada la clínica VitalSport?</summary>
+                        <p>VitalSport está ubicada en C/ Covadonga, 13B, Algemesí, Valencia 46680. Atendemos a
+                            pacientes de Algemesí y toda la comarca de La Ribera.</p>
+                    </details>
+                    <details class="faq__item">
+                        <summary>¿Qué servicios de fisioterapia ofrecen?</summary>
+                        <p>Ofrecemos fisioterapia deportiva, rehabilitación post-quirúrgica y post-lesión, terapia
+                            manual, readaptación, ecografía y presoterapia.</p>
+                    </details>
+                    <details class="faq__item">
+                        <summary>¿Cómo puedo reservar una cita?</summary>
+                        <p>Puedes reservar tu cita llamando al 614 07 96 81, por WhatsApp al mismo número, o a través
+                            de nuestro sistema de reservas online en la web.</p>
+                    </details>
+                    <details class="faq__item">
+                        <summary>¿Cuál es el horario de atención?</summary>
+                        <p>Atendemos de lunes a viernes de 9:00 a 20:00 horas.</p>
+                    </details>
                 </div>
             </div>
         </section>
@@ -421,7 +474,7 @@
                                 <span class="benefit__icon">💬</span>
                                 <div>
                                     <strong>Recordatorios</strong>
-                                    <p>Te avisamos por email y SMS</p>
+                                    <p>Te avisamos por email antes de tu cita</p>
                                 </div>
                             </div>
                         </div>
@@ -432,12 +485,17 @@
                         </div>
                     </div>
 
-                    <div class="booking__calendly">
-                        <div class="calendly-inline-widget"
-                            data-url="https://calendly.com/vitalsport-vitalsport/sesion-fisioterapia?hide_event_type_details=1&hide_gdpr_banner=1&primary_color=059669"
-                            style="min-width:320px;height:700px;"></div>
-                        <script type="text/javascript" src="https://assets.calendly.com/assets/external/widget.js"
-                            async></script>
+                    <div class="booking__calendly" id="calendly-container">
+                        <div class="calendly-consent" id="calendly-consent">
+                            <div class="calendly-consent__icon">📅</div>
+                            <h3>Elige día y hora</h3>
+                            <p>Consulta los huecos libres y reserva tu sesión en un minuto.</p>
+                            <button type="button" class="btn btn--primary" id="calendly-load">Ver disponibilidad</button>
+                            <small>Al pulsar se cargará Calendly, el servicio externo de reservas que usamos, que
+                                instala sus propias cookies y trata tus datos en EE. UU. Más información en la
+                                <a href="privacidad.html">Política de privacidad</a> y la
+                                <a href="cookies.html">Política de cookies</a>.</small>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -472,6 +530,7 @@
                         <li><a href="#services">Servicios</a></li>
                         <li><a href="#method">Nuestro Método</a></li>
                         <li><a href="#team">Equipo</a></li>
+                        <li><a href="#faq">Preguntas frecuentes</a></li>
                         <li><a href="#booking">Reservar</a></li>
                     </ul>
                 </div>
@@ -481,6 +540,10 @@
                     <ul>
                         <li><a href="#services">Fisioterapia</a></li>
                         <li><a href="#services">Rehabilitación</a></li>
+                        <li><a href="#services">Terapia Manual</a></li>
+                        <li><a href="#services">Readaptación</a></li>
+                        <li><a href="#services">Ecografía</a></li>
+                        <li><a href="#services">Presoterapia</a></li>
                     </ul>
                 </div>
 
@@ -499,9 +562,9 @@
             <div class="footer__bottom">
                 <p>&copy; 2026 VitalSport. Todos los derechos reservados.</p>
                 <div class="footer__legal">
-                    <a href="#">Aviso Legal</a>
-                    <a href="#">Privacidad</a>
-                    <a href="#">Cookies</a>
+                    <a href="aviso-legal.html">Aviso Legal</a>
+                    <a href="privacidad.html">Privacidad</a>
+                    <a href="cookies.html">Cookies</a>
                 </div>
             </div>
         </div>
@@ -594,6 +657,20 @@
             observer.observe(el);
         });
 
+        // Calendly: solo se carga (y pone cookies) cuando el usuario pulsa "Ver disponibilidad"
+        document.getElementById('calendly-load').addEventListener('click', () => {
+            const container = document.getElementById('calendly-container');
+            document.getElementById('calendly-consent').remove();
+            const widget = document.createElement('div');
+            widget.className = 'calendly-inline-widget';
+            widget.dataset.url = 'https://calendly.com/vitalsport-vitalsport/sesion-fisioterapia?hide_event_type_details=1&primary_color=0288d1';
+            container.appendChild(widget);
+            const script = document.createElement('script');
+            script.src = 'https://assets.calendly.com/assets/external/widget.js';
+            script.async = true;
+            container.appendChild(script);
+        });
+
         // Service Worker Registration for PWA
         if ('serviceWorker' in navigator) {
             window.addEventListener('load', () => {
@@ -605,14 +682,20 @@
     </script>
 
     <!-- Chat Assistant -->
-    <button id="chat-btn" aria-label="Abrir chat">
+    <button id="chat-btn" aria-label="Abrir chat con el asistente virtual">
         <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"></path></svg>
     </button>
-    <div id="chat-box">
-        <div id="chat-header">Asistente Virtual</div>
-        <div id="chat-messages"></div>
+    <div id="chat-box" role="dialog" aria-label="Asistente virtual de VitalSport">
+        <div id="chat-header">
+            <div>
+                Asistente virtual (IA)
+                <small>Respuestas generadas automáticamente</small>
+            </div>
+            <button id="chat-close" aria-label="Cerrar chat">×</button>
+        </div>
+        <div id="chat-messages" aria-live="polite"></div>
         <div id="chat-input-area">
-            <input id="chat-input" type="text" placeholder="Escribe tu pregunta..." />
+            <input id="chat-input" type="text" placeholder="Escribe tu pregunta..." maxlength="500" autocomplete="off" />
             <button id="chat-send">Enviar</button>
         </div>
     </div>
@@ -620,12 +703,15 @@
     <script>
         const chatBtn = document.getElementById('chat-btn');
         const chatBox = document.getElementById('chat-box');
+        const chatClose = document.getElementById('chat-close');
         const chatMessages = document.getElementById('chat-messages');
         const chatInput = document.getElementById('chat-input');
         const chatSend = document.getElementById('chat-send');
 
+        const MAX_HISTORY = 10;
         let chatHistory = [];
         let isFirstOpen = true;
+        let isSending = false;
 
         function addMessage(text, sender) {
             const msgDiv = document.createElement('div');
@@ -633,6 +719,20 @@
             msgDiv.textContent = text;
             chatMessages.appendChild(msgDiv);
             chatMessages.scrollTop = chatMessages.scrollHeight;
+        }
+
+        // Aviso de transparencia (art. 50 AI Act) + no compartir datos de salud
+        function addAiNotice() {
+            const div = document.createElement('div');
+            div.classList.add('chat-message', 'bot', 'notice');
+            div.append('¡Hola! Soy un asistente virtual de VitalSport basado en inteligencia artificial, no una persona. ' +
+                'Puedo informarte sobre servicios, horarios y reservas. Por favor, no compartas datos de salud ni ' +
+                'datos personales en este chat; para eso llámanos al 614 07 96 81. Más información en la ');
+            const link = document.createElement('a');
+            link.href = 'privacidad.html';
+            link.textContent = 'Política de privacidad';
+            div.append(link, '.');
+            chatMessages.appendChild(div);
         }
 
         function showThinking() {
@@ -649,22 +749,33 @@
             if (el) el.remove();
         }
 
-        chatBtn.addEventListener('click', () => {
-            const isOpen = chatBox.classList.toggle('chat-open');
-            if (isOpen && isFirstOpen) {
-                addMessage('¡Hola! Soy el asistente virtual de VitalSport. ¿En qué te puedo ayudar hoy?', 'bot');
+        function openChat() {
+            chatBox.classList.add('chat-open');
+            if (isFirstOpen) {
+                addAiNotice();
                 isFirstOpen = false;
-                chatInput.focus();
             }
+            chatInput.focus();
+        }
+
+        function closeChat() {
+            chatBox.classList.remove('chat-open');
+        }
+
+        chatBtn.addEventListener('click', () => {
+            chatBox.classList.contains('chat-open') ? closeChat() : openChat();
         });
+        chatClose.addEventListener('click', closeChat);
 
         async function sendMessage() {
-            const text = chatInput.value.trim();
-            if (!text) return;
+            const text = chatInput.value.trim().slice(0, 500);
+            if (!text || isSending) return;
 
+            isSending = true;
             addMessage(text, 'user');
             chatInput.value = '';
             chatHistory.push({ role: 'user', content: text });
+            chatHistory = chatHistory.slice(-MAX_HISTORY);
             showThinking();
 
             try {
@@ -674,23 +785,29 @@
                     body: JSON.stringify({ messages: chatHistory })
                 });
                 removeThinking();
-                if (!response.ok) throw new Error('Network error');
-                const data = await response.json();
-                if (data.reply) {
+                const data = await response.json().catch(() => ({}));
+                if (response.ok && data.reply) {
                     addMessage(data.reply, 'bot');
                     chatHistory.push({ role: 'assistant', content: data.reply });
-                } else if (data.error) {
-                    addMessage('Lo siento, hubo un problema: ' + data.error, 'bot');
+                } else if (response.status === 429) {
+                    addMessage('Has enviado muchos mensajes seguidos. Espera un poco o llámanos al 614 07 96 81.', 'bot');
+                } else {
+                    addMessage('Ahora mismo no puedo responder. Llámanos o escríbenos por WhatsApp al 614 07 96 81.', 'bot');
                 }
             } catch (error) {
                 removeThinking();
                 addMessage('Error de conexión. Llámanos al 614 07 96 81.', 'bot');
+            } finally {
+                isSending = false;
             }
         }
 
         chatSend.addEventListener('click', sendMessage);
         chatInput.addEventListener('keypress', (e) => {
             if (e.key === 'Enter') sendMessage();
+        });
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'Escape' && chatBox.classList.contains('chat-open')) closeChat();
         });
     </script>
 </body>
