@@ -1,7 +1,7 @@
 {
   "name": "VitalSport",
   "short_name": "VitalSport",
-  "description": "Clínica de Fisioterapia en Algemesí - Rehabilitación y Ejercicio Terapéutico",
+  "description": "Clínica de Fisioterapia en Algemesí - Rehabilitación",
   "start_url": "/",
   "scope": "/",
   "display": "standalone",
