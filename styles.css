@@ -1562,3 +1562,14 @@
         border-color: var(--primary);
         background: transparent;
     }
+
+    .team__name {
+        color: var(--gray-600);
+        margin-bottom: 1rem;
+        line-height: 1.5;
+    }
+
+    .team__name strong {
+        color: var(--secondary);
+        font-size: 1.2rem;
+    }
