@@ -1346,6 +1346,7 @@
         border-radius: 15px;
         max-width: 80%;
         word-wrap: break-word;
+        white-space: pre-line;
         font-size: 0.95rem;
         line-height: 1.4;
     }
