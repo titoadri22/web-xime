@@ -1,14 +1,13 @@
 // VitalSport Service Worker for PWA functionality
 // Red primero: siempre se sirve la versión más reciente y la caché solo se usa sin conexión.
 // Al cambiar CACHE_NAME se borran las cachés antiguas de los visitantes.
-const CACHE_NAME = 'vitalsport-v2';
+const CACHE_NAME = 'vitalsport-v3';
 const urlsToCache = [
   '/',
   '/index.html',
   '/styles.css',
   '/logo_icon.png',
-  '/hero-image.png',
-  '/team-image.png',
+  '/hero-image.webp',
   '/fonts/outfit-latin.woff2'
 ];
 

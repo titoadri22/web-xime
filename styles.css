@@ -429,7 +429,7 @@
         align-items: center;
         justify-content: center;
         background: linear-gradient(135deg, var(--secondary) 0%, var(--secondary-light) 100%);
-        background-image: url('hero-image.png');
+        background-image: url('hero-image.webp');
         background-size: cover;
         background-position: center;
         text-align: center;
